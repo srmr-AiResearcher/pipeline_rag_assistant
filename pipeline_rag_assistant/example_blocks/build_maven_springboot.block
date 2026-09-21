@@ -1,0 +1,15 @@
+---
+language: java
+framework: spring-boot
+build_tool: maven
+stage_type: build
+tags: java, spring-boot, maven, build, compile
+---
+build:
+  stage: build
+  image: maven:3.9-eclipse-temurin-17
+  script:
+    - mvn clean compile
+  cache:
+    paths:
+      - .m2/repository

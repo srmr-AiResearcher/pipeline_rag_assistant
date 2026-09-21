@@ -1,0 +1,16 @@
+---
+language: java
+build_tool: maven
+stage_type: package
+package_format: jar
+tags: java, maven, package, jar
+---
+package:
+  stage: package
+  image: maven:3.9-eclipse-temurin-17
+  script:
+    - mvn package -DskipTests
+  artifacts:
+    paths:
+      - target/*.jar
+    expire_in: 1 week

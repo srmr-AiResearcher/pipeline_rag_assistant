@@ -1,0 +1,15 @@
+---
+language: java
+framework: spring-boot
+build_tool: maven
+stage_type: test
+tags: java, spring-boot, maven, junit, test
+---
+test:
+  stage: test
+  image: maven:3.9-eclipse-temurin-17
+  script:
+    - mvn test
+  artifacts:
+    reports:
+      junit: target/surefire-reports/*.xml

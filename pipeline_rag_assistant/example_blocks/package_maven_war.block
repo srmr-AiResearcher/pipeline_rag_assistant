@@ -1,0 +1,16 @@
+---
+language: java
+build_tool: maven
+stage_type: package
+package_format: war
+tags: java, maven, package, war, tomcat, application-server
+---
+package:
+  stage: package
+  image: maven:3.9-eclipse-temurin-17
+  script:
+    - mvn package -DskipTests -P war
+  artifacts:
+    paths:
+      - target/*.war
+    expire_in: 1 week

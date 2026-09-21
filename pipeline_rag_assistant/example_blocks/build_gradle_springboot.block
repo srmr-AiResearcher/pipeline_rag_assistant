@@ -1,0 +1,15 @@
+---
+language: java
+framework: spring-boot
+build_tool: gradle
+stage_type: build
+tags: java, spring-boot, gradle, build, compile
+---
+build:
+  stage: build
+  image: gradle:8-jdk17
+  script:
+    - gradle compileJava
+  cache:
+    paths:
+      - .gradle/caches

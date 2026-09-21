@@ -1,0 +1,17 @@
+---
+language: any
+framework: any
+build_tool: gcloud
+stage_type: deploy
+tags: gcp, cloud-run, deploy, serverless
+---
+deploy_cloud_run:
+  stage: deploy
+  image: google/cloud-sdk:slim
+  script:
+    - gcloud run deploy "$SERVICE_NAME"
+        --image "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
+        --region us-central1
+        --allow-unauthenticated
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'

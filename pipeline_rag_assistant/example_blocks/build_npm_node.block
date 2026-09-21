@@ -1,0 +1,17 @@
+---
+language: javascript
+framework: node
+build_tool: npm
+stage_type: build
+tags: javascript, node, npm, build
+---
+build:
+  stage: build
+  image: node:20-slim
+  script:
+    - npm ci
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 1 hour

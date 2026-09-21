@@ -1,0 +1,18 @@
+---
+language: javascript
+framework: node
+build_tool: npm
+stage_type: test
+tags: javascript, node, npm, jest, test
+---
+test:
+  stage: test
+  image: node:20-slim
+  script:
+    - npm ci
+    - npm run test -- --coverage
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage/cobertura-coverage.xml
